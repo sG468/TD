@@ -18,7 +18,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerManager _playerManager;
     [SerializeField] private EnemyManager _enemyManager;
 
+    //[SerializeField] private GameObject _inGameUIPanel;
+    [SerializeField] private GameObject _gameOverPanel;
+    [SerializeField] private GameObject _gameClearPanel;
+
     public bool isGame = false;
+    public bool isGameOver = false;
+    public bool isGameClear = false;
 
     //private string _playerBaseName = "PlayerBase";
     //private string _enemyBaseName = "EnemyBase";
@@ -44,14 +50,31 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1.0f;
         isGame = true;
+        isGameClear = false;
+        isGameOver = false;
+        //_inGameUIPanel.SetActive(true);
+        _gameOverPanel.SetActive(false);
+        _gameClearPanel.SetActive(false);
         //StartCoroutine(_enemyManager.SpawnEnemy());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (isGameClear)
+        {
+            //_inGameUIPanel.SetActive(false);
+            _gameClearPanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else if (isGameOver)
+        {
+            //_inGameUIPanel.SetActive(false);
+            _gameOverPanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 
     //public void Clear()

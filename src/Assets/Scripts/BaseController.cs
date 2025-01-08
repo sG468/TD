@@ -89,6 +89,7 @@ public class BaseController : MonoBehaviour
         {
             //gameManager.GameOver();
             isStop = true;
+            gameManager.isGameOver = true;
         }
     }
 
@@ -99,6 +100,7 @@ public class BaseController : MonoBehaviour
         {
             //gameManager.Clear();
             isStop = true;
+            gameManager.isGameClear = true;
         }
     }
 
