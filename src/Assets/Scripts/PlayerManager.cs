@@ -87,4 +87,9 @@ public class PlayerManager : MonoBehaviour
     {
         return position.x < -11 || position.x > 11;
     }
+
+    public int ActivePlayersCount()
+    {
+        return _activePlayers.Count;
+    }
 }

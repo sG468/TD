@@ -12,7 +12,9 @@ public class EnemyManager : MonoBehaviour
     private List<EnemyController> _activeEnemies = new List<EnemyController>();
     private Queue<EnemyController> _enemyPool = new Queue<EnemyController>();
 
+    private int _activePlayersCount = 0;
     private bool isInitCompleted = false;
+    private float spawnInterval = 1.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +59,36 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    void ChangeSpawnInterval()
+    {
+        _activePlayersCount = _playerManager.ActivePlayersCount();
+
+        if (_activePlayersCount <= 1)
+        {
+            spawnInterval = 4.9f;
+        }
+        else if ((_activePlayersCount < 3) && (_activePlayersCount >= 2)) 
+        {
+            spawnInterval = 3.8f;
+        }
+        else if ((_activePlayersCount >= 3) && (_activePlayersCount < 4))
+        {
+            spawnInterval = 2.5f;
+        }
+        else if ((_activePlayersCount >= 4) && (_activePlayersCount < 5))
+        {
+            spawnInterval = 1.8f;
+        }
+        else if((_activePlayersCount >= 5) && (_activePlayersCount < 7))
+        {
+            spawnInterval = 1.5f;
+        }
+        else
+        {
+            spawnInterval = 1.3f;
+        }
+    }
+
     //“G‚ÌoŒ»
     public IEnumerator SpawnEnemy()
     {
@@ -64,6 +96,8 @@ public class EnemyManager : MonoBehaviour
 
         while (true)
         {
+            ChangeSpawnInterval();
+
             if (_enemyPool.Count > 0)
             {
                 var enemy = _enemyPool.Dequeue();
@@ -72,7 +106,7 @@ public class EnemyManager : MonoBehaviour
                 _activeEnemies.Add(enemy);
             }
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
 

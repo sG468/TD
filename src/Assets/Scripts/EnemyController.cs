@@ -63,7 +63,7 @@ public class EnemyController : MonoBehaviour
     {
         float y = Random.Range(-1.0f, -2.0f);
         SpriteRenderer pl = GetComponent<SpriteRenderer>();
-        pl.transform.position = new Vector3(-10.0f, y, 0);
+        pl.transform.position = new Vector3(-7.5f, y, 0);
         pl.sortingOrder = (int)(-y * 10);
         state = EnemyState.Move;
         //health = healthStock;

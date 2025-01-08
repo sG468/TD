@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         float y = Random.Range(-1.0f, -2.0f);
         SpriteRenderer pl = GetComponent<SpriteRenderer>();
-        pl.transform.position = new Vector3(9.6f, y, 0);
+        pl.transform.position = new Vector3(7.45f, y, 0);
         pl.sortingOrder = (int)(-y * 10);
         state = PlayerState.Move;
         //health = healthStock;
