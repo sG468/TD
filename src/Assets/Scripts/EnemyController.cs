@@ -1,11 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Resources;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
-using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class EnemyController : MonoBehaviour
 {

@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static EnemyController;
 
 public class PlayerController : MonoBehaviour
 {
